@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute } from 'react-router'
 import store, { history } from './store'
 import HomeContainer from './HomeContainer'
+import SignIn from './SignIn'
 import registerServiceWorker from './registerServiceWorker'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import App from './App'
@@ -14,6 +15,7 @@ ReactDOM.render(
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={HomeContainer} />
+        <Route path="/sign-in" component={SignIn} />
       </Route>
     </Router>
   </Provider>,
