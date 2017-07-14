@@ -5,6 +5,7 @@ import { Router, Route, IndexRoute } from 'react-router'
 import store, { history } from './store'
 import HomeContainer from './HomeContainer'
 import registerServiceWorker from './registerServiceWorker'
+import injectTapEventPlugin from 'react-tap-event-plugin'
 import App from './App'
 import './index.css'
 
@@ -20,3 +21,4 @@ ReactDOM.render(
 )
 
 registerServiceWorker()
+injectTapEventPlugin()
