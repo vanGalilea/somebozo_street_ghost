@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import DropPhotos from './DropPhotos'
 import AddPhotoInfo from './AddPhotoInfo'
 import {
@@ -21,6 +22,7 @@ export class UploadTool extends PureComponent {
     super(props)
 
     this.state = {
+      stepCompleted: true,
       finished: false,
       stepIndex: 0,
     }
@@ -99,6 +101,7 @@ export class UploadTool extends PureComponent {
                   label={stepIndex === 2 ? 'Finish' : 'Next'}
                   primary={true}
                   onClick={this.handleNext.bind(this)}
+                  disabled={!this.props.tempUploadedPhotos.length > 0}
                 />
               </div>
             </div>
@@ -109,4 +112,6 @@ export class UploadTool extends PureComponent {
   }
 }
 
-export default UploadTool
+const mapStateToProps = ({ tempUploadedPhotos }) => ({ tempUploadedPhotos })
+
+export default connect(mapStateToProps)(UploadTool)
