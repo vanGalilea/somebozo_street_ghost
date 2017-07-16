@@ -4,7 +4,7 @@ import {GridList, GridTile} from 'material-ui/GridList'
 import IconButton from 'material-ui/IconButton'
 import StarBorder from 'material-ui/svg-icons/toggle/star-border'
 import fetchPhotos from './actions/photos/fetch'
-import DropPhotos from './DropPhotos'
+import UploadTool from './UploadTool'
 
 const styles = {
   root: {
@@ -22,17 +22,15 @@ const styles = {
 export class PhotoGrid extends PureComponent {
 
   componentWillMount() {
-      this.props.fetchPhotos()
-    }
-
+    this.props.fetchPhotos()
+  }
 
   render() {
     const {photos} = this.props
     return(
       <div>
-        <DropPhotos />
+        <UploadTool />
         <div style={styles.root}>
-
 
           <GridList
             cols={2}
