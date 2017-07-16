@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import Toggle from 'material-ui/Toggle'
 import TextField from 'material-ui/TextField'
 import { connect } from 'react-redux'
-import uploadedPhotos from './actions/uploadedPhotos'
+import createPhoto from './actions/photos/create'
 import Avatar from 'material-ui/Avatar';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
@@ -32,13 +32,44 @@ export class AddPhotoInfo extends PureComponent {
     this.state = {
       title: '',
       url: '',
+      description: '',
       featured: false,
       currentPhoto: 0,
     }
   }
 
-  handleTitleSubmit() {
-    
+  handleTitleChange(event) {
+    event.preventDefault()
+    this.setState({ title: this.refs.title.value })
+  }
+
+  handleDescriptionChange(event) {
+    event.preventDefault()
+    this.setState({ description: this.refs.description.value })
+  }
+
+  handleFeaturedToggle(event) {
+    event.preventDefault()
+    this.setState({ featured: !this.state.featured })
+  }
+
+  handleSubmitAndNext(event) {
+    event.preventDefault()
+    const {tempUploadedPhotos} = this.props
+    const { title, description, featured, currentPhoto } = this.state
+    const newPhoto = { title, url: tempUploadedPhotos[currentPhoto].url, description, featured }
+
+    this.setState({
+      title: '',
+      url: '',
+      description: '',
+      featured: false,
+      currentPhoto: currentPhoto + 1
+    })
+
+    this.props.createPhoto(newPhoto)
+
+    // tempUploadedPhotos.length === currentPhoto + 1 ? clean uploadedPhotos from store to []
   }
 
   renderFormContainer(photo) {
@@ -52,6 +83,8 @@ export class AddPhotoInfo extends PureComponent {
                 hintText="Title of the Photo"
                 errorText="You have to fill in a title"
                 floatingLabelText="Title"
+                ref="title"
+                onChange={this.handleTitleChange.bind(this)}
               />
             </div>
           }
@@ -61,6 +94,8 @@ export class AddPhotoInfo extends PureComponent {
               floatingLabelText="Description"
               multiLine={true}
               rows={2}
+              ref="description"
+              onChange={this.handleDescriptionChange.bind(this)}
             />
           }
           rightToggle={
@@ -88,13 +123,9 @@ export class AddPhotoInfo extends PureComponent {
       <div>
         {this.renderFormContainer(tempUploadedPhotos[currentPhoto])}
 
-        {tempUploadedPhotos.length > currentPhoto + 1 ?
-          <FloatingActionButton onClick={()=> this.setState({currentPhoto: currentPhoto + 1})}mini={true} style={style}>
-            <Done />
-          </FloatingActionButton> :
-          null
-        }
-
+        <FloatingActionButton onClick={this.handleSubmitAndNext.bind(this)}mini={true} style={style}>
+          <Done />
+        </FloatingActionButton>
       </div>
     )
   }
@@ -102,4 +133,4 @@ export class AddPhotoInfo extends PureComponent {
 
 const mapStateToProps = ({ tempUploadedPhotos }) => ({ tempUploadedPhotos })
 
-export default connect(mapStateToProps, { uploadedPhotos })(AddPhotoInfo)
+export default connect(mapStateToProps, { createPhoto })(AddPhotoInfo)

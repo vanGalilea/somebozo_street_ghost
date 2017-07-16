@@ -31,6 +31,7 @@ export class UploadTool extends PureComponent {
   handleNext() {
     const {stepIndex} = this.state;
     this.setState({
+      stepCompleted: true,
       stepIndex: stepIndex + 1,
       finished: stepIndex >= 2,
     })
@@ -56,8 +57,19 @@ export class UploadTool extends PureComponent {
     }
   }
 
+  compleatedStep(nextProps) {
+    const {finished, stepIndex} = this.state
+    const {tempUploadedPhotos} = nextProps
+    if (stepIndex === 0) this.setState ({ stepCompleted: !tempUploadedPhotos.length > 0 })
+    if (stepIndex === 1) this.setState ({ stepCompleted: tempUploadedPhotos.length !== 0 })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.compleatedStep(nextProps)
+  }
+
   render() {
-    const {finished, stepIndex} = this.state;
+    const {finished, stepIndex, stepCompleted} = this.state;
     const contentStyle = {margin: '0 16px'};
 
     return (
@@ -101,7 +113,7 @@ export class UploadTool extends PureComponent {
                   label={stepIndex === 2 ? 'Finish' : 'Next'}
                   primary={true}
                   onClick={this.handleNext.bind(this)}
-                  disabled={!this.props.tempUploadedPhotos.length > 0}
+                  disabled={stepCompleted}
                 />
               </div>
             </div>
