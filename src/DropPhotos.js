@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import Toggle from 'material-ui/Toggle'
+import TextField from 'material-ui/TextField'
 import { connect } from 'react-redux'
 import createPhoto from './actions/photos/create'
 import Dropzone from 'react-dropzone'
@@ -67,6 +68,18 @@ export class DropPhotos extends PureComponent {
 
     return(
       <div>
+        <TextField
+          hintText="Title of the Photo"
+          errorText="You have to fill in a title"
+          floatingLabelText="Title"
+        /><br />
+        <TextField
+          hintText="Few words about this photo"
+          floatingLabelText="Description"
+          multiLine={true}
+          rows={2}
+        /><br />
+
         <div style={styles.block}>
           <Toggle
             label="Fetured"
@@ -74,12 +87,13 @@ export class DropPhotos extends PureComponent {
             style={styles.toggle}
           />
         </div>
-          <Dropzone
-            multiple={true}
-            accept="image/*"
-            onDrop={this.onImageDrop.bind(this)}>
-            <p>Drop an image or click to select a file to upload.</p>
-          </Dropzone>
+
+        <Dropzone
+          multiple={true}
+          accept="image/*"
+          onDrop={this.onImageDrop.bind(this)}>
+          <p>Drop an image or click to select a file to upload.</p>
+        </Dropzone>
       </div>
     )
   }
