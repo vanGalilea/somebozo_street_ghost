@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import { connect } from 'react-redux'
-import createPhoto from './actions/photos/fetch'
+import createPhoto from './actions/photos/create'
 import Dropzone from 'react-dropzone'
 import request from 'superagent'
 
@@ -29,8 +29,12 @@ export class DropPhotos extends PureComponent {
                         .field('file', file)
 
     upload.end((err, response) => {
+      const responseUrl = response.body.secure_url
       if (err) console.error(err)
-      if (response.body.secure_url !== '') this.setState({ uploadedFileCloudinaryUrl: response.body.secure_url })
+      if (responseUrl !== '') {
+        this.setState({ uploadedFileCloudinaryUrl: responseUrl })
+        this.props.createPhoto({url: responseUrl})
+      }
     })
   }
 

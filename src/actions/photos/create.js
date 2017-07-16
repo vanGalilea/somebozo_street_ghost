@@ -13,7 +13,7 @@ const api = new API()
 
 export default (newPhoto) => {
   return (dispatch) => {
-
+    console.log(newPhoto)
   dispatch({ type: APP_LOADING })
 
    const backend = api.service('photos')
