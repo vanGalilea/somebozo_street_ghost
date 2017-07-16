@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import {GridList, GridTile} from 'material-ui/GridList'
 import IconButton from 'material-ui/IconButton'
 import StarBorder from 'material-ui/svg-icons/toggle/star-border'
 import fetchPhotos from './actions/photos/fetch'
-import { connect } from 'react-redux'
+import DropPhotos from './DropPhotos'
 
 const styles = {
   root: {
@@ -28,31 +29,36 @@ export class PhotoGrid extends PureComponent {
   render() {
     const {photos} = this.props
     return(
-     <div style={styles.root}>
-       <GridList
-         cols={2}
-         cellHeight={200}
-         padding={1}
-         style={styles.gridList}
-       >
-         {photos.map((photo) => (
-           <GridTile
-             key={photo.url}
-             title={photo.title}
-             actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-             actionPosition="left"
-             titlePosition="top"
-             titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
-             cols={photo.featured ? 2 : 1}
-             rows={photo.featured ? 2 : 1}
-           >
-             <img src={photo.url} />
-           </GridTile>
-         ))}
-       </GridList>
-     </div>
-   )
- }
+      <div>
+        <DropPhotos />
+        <div style={styles.root}>
+
+
+          <GridList
+            cols={2}
+            cellHeight={200}
+            padding={1}
+            style={styles.gridList}
+          >
+            {photos.map((photo) => (
+              <GridTile
+                key={photo.url}
+                title={photo.title}
+                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+                actionPosition="left"
+                titlePosition="top"
+                titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
+                cols={photo.featured ? 2 : 1}
+                rows={photo.featured ? 2 : 1}
+              >
+                <img src={photo.url} />
+              </GridTile>
+            ))}
+          </GridList>
+        </div>
+      </div>
+    )
+  }
 }
 
 
