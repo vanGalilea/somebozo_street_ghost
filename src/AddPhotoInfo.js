@@ -3,12 +3,13 @@ import Toggle from 'material-ui/Toggle'
 import TextField from 'material-ui/TextField'
 import { connect } from 'react-redux'
 import createPhoto from './actions/photos/create'
-import Avatar from 'material-ui/Avatar';
-import {List, ListItem} from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import Done from 'material-ui/svg-icons/action/done';
-import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
+import Avatar from 'material-ui/Avatar'
+import {List, ListItem} from 'material-ui/List'
+import Subheader from 'material-ui/Subheader'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import Done from 'material-ui/svg-icons/action/done'
+import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
+import cleanUploadedPhotos from './actions/photos/cleanUploadedPhotos'
 
 const styles = {
   block: {
@@ -58,10 +59,10 @@ export class AddPhotoInfo extends PureComponent {
     const {tempUploadedPhotos} = this.props
     const { title, description, featured, currentPhoto } = this.state
     const newPhoto = { title, url: tempUploadedPhotos[currentPhoto].url, description, featured }
-
     debugger
     this.props.createPhoto(newPhoto)
-
+    tempUploadedPhotos.length === currentPhoto + 1 ?
+    this.props.cleanUploadedPhotos() :
     this.setState({
       title: '',
       url: '',
@@ -69,8 +70,6 @@ export class AddPhotoInfo extends PureComponent {
       featured: false,
       currentPhoto: currentPhoto + 1
     })
-
-    // tempUploadedPhotos.length === currentPhoto + 1 ? clean uploadedPhotos from store to []
   }
 
   renderFormContainer(photo) {
@@ -86,6 +85,7 @@ export class AddPhotoInfo extends PureComponent {
                 floatingLabelText="Title"
                 ref="title"
                 onChange={this.handleTitleChange.bind(this)}
+                value={this.state.title}
               />
             </div>
           }
@@ -97,6 +97,7 @@ export class AddPhotoInfo extends PureComponent {
               rows={2}
               ref="description"
               onChange={this.handleDescriptionChange.bind(this)}
+              value={this.state.description}
             />
           }
           rightToggle={
@@ -105,6 +106,7 @@ export class AddPhotoInfo extends PureComponent {
                 label="Featured"
                 defaultToggled={true}
                 style={styles.toggle}
+                onToggle={this.handleFeaturedToggle.bind(this)}
               />
             </div>
 
@@ -118,7 +120,7 @@ export class AddPhotoInfo extends PureComponent {
   render() {
     const {tempUploadedPhotos} = this.props
     const {currentPhoto} = this.state
-    if (!tempUploadedPhotos || !tempUploadedPhotos[currentPhoto]) return null
+    if (!tempUploadedPhotos || !tempUploadedPhotos[currentPhoto]) return <p>All photos have been uploaded succefully, hit Next</p>
 
     return(
       <div>
@@ -134,4 +136,4 @@ export class AddPhotoInfo extends PureComponent {
 
 const mapStateToProps = ({ tempUploadedPhotos }) => ({ tempUploadedPhotos })
 
-export default connect(mapStateToProps, { createPhoto })(AddPhotoInfo)
+export default connect(mapStateToProps, { createPhoto, cleanUploadedPhotos })(AddPhotoInfo)

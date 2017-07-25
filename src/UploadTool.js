@@ -2,20 +2,15 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import DropPhotos from './DropPhotos'
 import AddPhotoInfo from './AddPhotoInfo'
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import { history } from './store'
 import {
   Step,
   Stepper,
   StepLabel,
-} from 'material-ui/Stepper';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+} from 'material-ui/Stepper'
 
-/**
- * Horizontal steppers are ideal when the contents of one step depend on an earlier step.
- * Avoid using long step names in horizontal steppers.
- *
- * Linear steppers require users to complete one step in order to move on to the next.
- */
 export class UploadTool extends PureComponent {
 
   constructor(props) {
@@ -30,6 +25,7 @@ export class UploadTool extends PureComponent {
 
   handleNext() {
     const {stepIndex} = this.state;
+
     this.setState({
       stepCompleted: true,
       stepIndex: stepIndex + 1,
@@ -51,7 +47,8 @@ export class UploadTool extends PureComponent {
       case 1:
         return <AddPhotoInfo />
       case 2:
-        return this.confirmUploads;
+        return <p>You have succefully uploaded {this.props.tempUploadedPhotos.length+1} photo/s,
+          after pressing Next you will be redirected to the homepage</p>
       default:
         return 'You\'re a long way from home sonny jim!';
     }
@@ -61,20 +58,11 @@ export class UploadTool extends PureComponent {
     const {finished, stepIndex} = this.state
     const {tempUploadedPhotos} = nextProps
     if (stepIndex === 0) this.setState ({ stepCompleted: !tempUploadedPhotos.length > 0 })
-    if (stepIndex === 1) this.setState ({ stepCompleted: tempUploadedPhotos.length !== 0 })
+    if (stepIndex === 1) this.setState ({ stepCompleted: !tempUploadedPhotos.length === 0 })
   }
 
   componentWillReceiveProps(nextProps) {
     this.compleatedStep(nextProps)
-  }
-
-  confirmUploads() {
-    const tempUploadedPhotos = this.props
-
-    return (
-      <p>You've succefully uploaded {tempUploadedPhotos.length} photos,
-      after pressing "Next" you'll be redirected to the homepage</p>
-    )
   }
 
   render() {
@@ -96,19 +84,7 @@ export class UploadTool extends PureComponent {
         </Stepper>
 
         <div style={contentStyle}>
-          {finished ? (
-            <p>
-              <a
-                href="#"
-                onClick={(event) => {
-                  event.preventDefault();
-                  this.setState({stepIndex: 0, finished: false});
-                }}
-              >
-                Click here
-              </a> to reset the example.
-            </p>
-          ) : (
+          {finished ? history.push('/') : (
             <div>
               {this.getStepContent(stepIndex)}
               <div style={{marginTop: 12}}>
@@ -122,7 +98,7 @@ export class UploadTool extends PureComponent {
                   label={stepIndex === 2 ? 'Finish' : 'Next'}
                   primary={true}
                   onClick={this.handleNext.bind(this)}
-                  disabled={stepCompleted}
+                  disabled={(stepIndex === 2) ? false : stepCompleted}
                 />
               </div>
             </div>

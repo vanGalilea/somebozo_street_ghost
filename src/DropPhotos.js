@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
-import Toggle from 'material-ui/Toggle'
 import TextField from 'material-ui/TextField'
 import { connect } from 'react-redux'
-import uploadedPhotos from './actions/uploadedPhotos'
+import uploadedPhotos from './actions/photos/uploadedPhotos'
 import Dropzone from 'react-dropzone'
 import request from 'superagent'
 
