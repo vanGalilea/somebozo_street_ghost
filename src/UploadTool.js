@@ -51,7 +51,7 @@ export class UploadTool extends PureComponent {
       case 1:
         return <AddPhotoInfo />
       case 2:
-        return 'This is the bit I really care about!';
+        return this.confirmUploads;
       default:
         return 'You\'re a long way from home sonny jim!';
     }
@@ -66,6 +66,15 @@ export class UploadTool extends PureComponent {
 
   componentWillReceiveProps(nextProps) {
     this.compleatedStep(nextProps)
+  }
+
+  confirmUploads() {
+    const tempUploadedPhotos = this.props
+
+    return (
+      <p>You've succefully uploaded {tempUploadedPhotos.length} photos,
+      after pressing "Next" you'll be redirected to the homepage</p>
+    )
   }
 
   render() {

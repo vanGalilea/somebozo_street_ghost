@@ -40,12 +40,12 @@ export class AddPhotoInfo extends PureComponent {
 
   handleTitleChange(event) {
     event.preventDefault()
-    this.setState({ title: this.refs.title.value })
+    this.setState({ title: event.target.value })
   }
 
   handleDescriptionChange(event) {
     event.preventDefault()
-    this.setState({ description: this.refs.description.value })
+    this.setState({ description: event.target.value })
   }
 
   handleFeaturedToggle(event) {
@@ -59,6 +59,9 @@ export class AddPhotoInfo extends PureComponent {
     const { title, description, featured, currentPhoto } = this.state
     const newPhoto = { title, url: tempUploadedPhotos[currentPhoto].url, description, featured }
 
+    debugger
+    this.props.createPhoto(newPhoto)
+
     this.setState({
       title: '',
       url: '',
@@ -66,8 +69,6 @@ export class AddPhotoInfo extends PureComponent {
       featured: false,
       currentPhoto: currentPhoto + 1
     })
-
-    this.props.createPhoto(newPhoto)
 
     // tempUploadedPhotos.length === currentPhoto + 1 ? clean uploadedPhotos from store to []
   }
@@ -117,7 +118,7 @@ export class AddPhotoInfo extends PureComponent {
   render() {
     const {tempUploadedPhotos} = this.props
     const {currentPhoto} = this.state
-    if (!tempUploadedPhotos) return null
+    if (!tempUploadedPhotos || !tempUploadedPhotos[currentPhoto]) return null
 
     return(
       <div>
