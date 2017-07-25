@@ -5,6 +5,7 @@ import AddPhotoInfo from './AddPhotoInfo'
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import { history } from './store'
+import './UploadTool.css'
 import {
   Step,
   Stepper,
@@ -55,7 +56,7 @@ export class UploadTool extends PureComponent {
   }
 
   compleatedStep(nextProps) {
-    const {finished, stepIndex} = this.state
+    const {stepIndex} = this.state
     const {tempUploadedPhotos} = nextProps
     if (stepIndex === 0) this.setState ({ stepCompleted: !tempUploadedPhotos.length > 0 })
     if (stepIndex === 1) this.setState ({ stepCompleted: !tempUploadedPhotos.length === 0 })
@@ -70,39 +71,42 @@ export class UploadTool extends PureComponent {
     const contentStyle = {margin: '0 16px'};
 
     return (
-      <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
-        <Stepper activeStep={stepIndex}>
-          <Step>
-            <StepLabel>Upload Photo/s</StepLabel>
-          </Step>
-          <Step>
-            <StepLabel>Add Info</StepLabel>
-          </Step>
-          <Step>
-            <StepLabel>Confirm and Submit</StepLabel>
-          </Step>
-        </Stepper>
+      <div>
+        <h2>Admin Upload Tool</h2>
+        <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
+          <Stepper activeStep={stepIndex}>
+            <Step>
+              <StepLabel>Upload Photo/s</StepLabel>
+            </Step>
+            <Step>
+              <StepLabel>Add Info</StepLabel>
+            </Step>
+            <Step>
+              <StepLabel>Confirm and Submit</StepLabel>
+            </Step>
+          </Stepper>
 
-        <div style={contentStyle}>
-          {finished ? history.push('/') : (
-            <div>
-              {this.getStepContent(stepIndex)}
-              <div style={{marginTop: 12}}>
-                <FlatButton
-                  label="Back"
-                  disabled={stepIndex === 0}
-                  onClick={this.handlePrev.bind(this)}
-                  style={{marginRight: 12}}
-                />
-                <RaisedButton
-                  label={stepIndex === 2 ? 'Finish' : 'Next'}
-                  primary={true}
-                  onClick={this.handleNext.bind(this)}
-                  disabled={(stepIndex === 2) ? false : stepCompleted}
-                />
+          <div style={contentStyle}>
+            {finished ? history.push('/') : (
+              <div>
+                {this.getStepContent(stepIndex)}
+                <div style={{marginTop: 12}}>
+                  <FlatButton
+                    label="Back"
+                    disabled={stepIndex === 0}
+                    onClick={this.handlePrev.bind(this)}
+                    style={{marginRight: 12}}
+                  />
+                  <RaisedButton
+                    label={stepIndex === 2 ? 'Finish' : 'Next'}
+                    primary={true}
+                    onClick={this.handleNext.bind(this)}
+                    disabled={(stepIndex === 2) ? false : stepCompleted}
+                  />
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     )

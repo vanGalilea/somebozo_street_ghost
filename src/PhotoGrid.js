@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import {GridList, GridTile} from 'material-ui/GridList'
-import IconButton from 'material-ui/IconButton'
+// import IconButton from 'material-ui/IconButton'
+import IconButton from 'material-ui/svg-icons/action/delete-forever'
 import StarBorder from 'material-ui/svg-icons/toggle/star-border'
 import fetchPhotos from './actions/photos/fetch'
 
@@ -13,7 +14,7 @@ const styles = {
   },
   gridList: {
     width: 500,
-    height: 500,
+    height: 1000,
     overflowY: 'auto',
   },
 };
@@ -47,7 +48,7 @@ export class PhotoGrid extends PureComponent {
                 cols={photo.featured ? 2 : 1}
                 rows={photo.featured ? 2 : 1}
               >
-                <img src={photo.url} />
+                <img alt="galletPhoto" src={photo.url} />
               </GridTile>
             ))}
           </GridList>

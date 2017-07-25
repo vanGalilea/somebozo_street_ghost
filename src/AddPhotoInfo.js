@@ -8,7 +8,6 @@ import {List, ListItem} from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import Done from 'material-ui/svg-icons/action/done'
-import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
 import cleanUploadedPhotos from './actions/photos/cleanUploadedPhotos'
 
 const styles = {
@@ -59,7 +58,7 @@ export class AddPhotoInfo extends PureComponent {
     const {tempUploadedPhotos} = this.props
     const { title, description, featured, currentPhoto } = this.state
     const newPhoto = { title, url: tempUploadedPhotos[currentPhoto].url, description, featured }
-    debugger
+
     this.props.createPhoto(newPhoto)
     tempUploadedPhotos.length === currentPhoto + 1 ?
     this.props.cleanUploadedPhotos() :
@@ -81,7 +80,7 @@ export class AddPhotoInfo extends PureComponent {
             <div>
               <TextField
                 hintText="Title of the Photo"
-                errorText="You have to fill in a title"
+                errorText={this.state.title.length === 0 ? "You have to fill in a title" : null }
                 floatingLabelText="Title"
                 ref="title"
                 onChange={this.handleTitleChange.bind(this)}

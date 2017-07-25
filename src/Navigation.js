@@ -6,6 +6,8 @@ import signOut from './actions/user/sign-out'
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
 import Palette from 'material-ui/svg-icons/image/palette'
+import FingerPrint from 'material-ui/svg-icons/action/fingerprint'
+import Exit from 'material-ui/svg-icons/action/exit-to-app'
 import FlatButton from 'material-ui/FlatButton'
 
 class Navigation extends PureComponent {
@@ -31,8 +33,8 @@ class Navigation extends PureComponent {
         title="Somebozo Street Ghost"
         iconElementLeft={<IconButton onClick={this.goHome}><Palette /></IconButton>}
         iconElementRight={signedIn ?
-          <FlatButton label="Sign out" onClick={signOut} /> :
-          <FlatButton label="Sign in" onClick={this.signIn} />
+          <FlatButton label={<Exit />} onClick={signOut} /> :
+          <FlatButton label={<FingerPrint />} onClick={this.signIn}/>
         }
       />
     )
