@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import DropPhotos from './DropPhotos'
 import AddPhotoInfo from './AddPhotoInfo'
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton'
+import FlatButton from 'material-ui/FlatButton'
 import { push } from 'react-router-redux'
 import './UploadTool.css'
 import {
