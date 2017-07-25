@@ -21,10 +21,10 @@ class Navigation extends PureComponent {
         iconElementLeft={<IconButton onClick={()=>this.props.push('/')}><Palette /></IconButton>}
         iconElementRight={signedIn ?
           <div>
-            <FlatButton label={<AddPhoto />} onClick={()=>this.props.push('/admin')} />
-            <FlatButton label={<Exit />} onClick={signOut} />
+            <IconButton onClick={()=>this.props.push('/admin')} ><AddPhoto /></IconButton>
+            <IconButton onClick={signOut}><Exit /></IconButton>
           </div> :
-          <FlatButton label={<FingerPrint />} onClick={()=>this.props.push('/sign-in')}/>
+          <IconButton onClick={()=>this.props.push('/sign-in')}><FingerPrint /></IconButton>
         }
       />
     )
