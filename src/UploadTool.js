@@ -4,7 +4,7 @@ import DropPhotos from './DropPhotos'
 import AddPhotoInfo from './AddPhotoInfo'
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
-import { history } from './store'
+import { push } from 'react-router-redux'
 import './UploadTool.css'
 import {
   Step,
@@ -67,9 +67,10 @@ export class UploadTool extends PureComponent {
   }
 
   render() {
-    const {finished, stepIndex, stepCompleted} = this.state;
-    const contentStyle = {margin: '0 16px'};
-
+    const {finished, stepIndex, stepCompleted} = this.state
+    const {signedIn} = this.props
+    const contentStyle = {margin: '0 16px'}
+    if (!signedIn) this.props.push('/')
     return (
       <div>
         <h2>Admin Upload Tool</h2>
@@ -87,7 +88,7 @@ export class UploadTool extends PureComponent {
           </Stepper>
 
           <div style={contentStyle}>
-            {finished ? history.push('/') : (
+            {finished ? this.props.push('/') : (
               <div>
                 {this.getStepContent(stepIndex)}
                 <div style={{marginTop: 12}}>
@@ -113,6 +114,9 @@ export class UploadTool extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ tempUploadedPhotos }) => ({ tempUploadedPhotos })
+const mapStateToProps = ({ currentUser, tempUploadedPhotos }) => ({
+  tempUploadedPhotos,
+  signedIn: !!currentUser && !!currentUser._id
+ })
 
-export default connect(mapStateToProps)(UploadTool)
+export default connect(mapStateToProps, { push })(UploadTool)

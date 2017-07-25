@@ -2,8 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import {GridList, GridTile} from 'material-ui/GridList'
 // import IconButton from 'material-ui/IconButton'
-import IconButton from 'material-ui/svg-icons/action/delete-forever'
-import StarBorder from 'material-ui/svg-icons/toggle/star-border'
+import Delete from 'material-ui/svg-icons/action/delete-forever'
 import fetchPhotos from './actions/photos/fetch'
 
 const styles = {
@@ -26,7 +25,8 @@ export class PhotoGrid extends PureComponent {
   }
 
   render() {
-    const {photos} = this.props
+    const {signedIn, photos} = this.props
+
     return(
       <div>
         <div style={styles.root}>
@@ -41,14 +41,14 @@ export class PhotoGrid extends PureComponent {
               <GridTile
                 key={photo.url}
                 title={photo.title}
-                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-                actionPosition="left"
+                actionIcon={signedIn ? <Delete color="white" /> : null}
+                actionPosition="right"
                 titlePosition="top"
                 titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
                 cols={photo.featured ? 2 : 1}
                 rows={photo.featured ? 2 : 1}
               >
-                <img alt="galletPhoto" src={photo.url} />
+                <img alt="galleryPhoto" src={photo.url} onClick={()=> null} />
               </GridTile>
             ))}
           </GridList>
@@ -59,6 +59,9 @@ export class PhotoGrid extends PureComponent {
 }
 
 
-const mapStateToProps = ({ photos }) => ({ photos })
+const mapStateToProps = ({ currentUser, photos }) => ({
+  photos,
+  signedIn: !!currentUser && !!currentUser._id
+ })
 
 export default connect(mapStateToProps, { fetchPhotos })(PhotoGrid)
