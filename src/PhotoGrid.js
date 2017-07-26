@@ -8,6 +8,7 @@ import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import IconButton from 'material-ui/IconButton'
 import RaisedButton from 'material-ui/RaisedButton'
+import ImageGallery from 'react-image-gallery'
 
 const styles = {
   root: {

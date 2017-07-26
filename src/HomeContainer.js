@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import PhotoGrid from './PhotoGrid'
+import PhotoGallery from './PhotoGallery'
 
 export class HomeContainer extends PureComponent {
 
@@ -8,7 +8,7 @@ export class HomeContainer extends PureComponent {
     return(
       <div >
         <h1>Somebozo Home Page</h1>
-        <PhotoGrid />
+        <PhotoGallery />
       </div>
     )
   }
