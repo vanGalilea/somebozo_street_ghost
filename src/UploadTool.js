@@ -5,6 +5,7 @@ import AddPhotoInfo from './AddPhotoInfo'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
 import { push } from 'react-router-redux'
+import PhotoGrid from './PhotoGrid'
 import './UploadTool.css'
 import {
   Step,
@@ -109,6 +110,7 @@ export class UploadTool extends PureComponent {
             )}
           </div>
         </div>
+        <PhotoGrid />
       </div>
     )
   }
