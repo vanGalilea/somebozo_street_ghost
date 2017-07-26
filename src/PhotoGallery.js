@@ -1,34 +1,29 @@
 import React, { PureComponent } from 'react'
 import ImageGallery from 'react-image-gallery'
+import { connect } from 'react-redux'
+import Delete from 'material-ui/svg-icons/action/delete-forever'
+import fetchPhotos from './actions/photos/fetch'
+import deletePhoto from './actions/photos/delete'
+import IconButton from 'material-ui/IconButton'
 import './PhotoGallery.css'
 
 export class PhotoGallery extends PureComponent {
 
-  handleImageLoad(event) {
-    console.log('Image loaded ', event.target)
+  componentWillMount() {
+    this.props.fetchPhotos()
   }
 
-  render() {
+  // handleImageLoad(event) {
+  //   console.log('Image loaded ', event.target)
+  // }
 
-    const images = [
-      {
-        original: 'http://lorempixel.com/1000/600/nature/1/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/1/',
-      },
-      {
-        original: 'http://lorempixel.com/1000/600/nature/2/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/2/'
-      },
-      {
-        original: 'http://lorempixel.com/1000/600/nature/3/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/3/'
-      }
-    ]
+  render() {
+    const {photos} = this.props
 
     return (
       <div className="gallery">
         <ImageGallery
-          items={images}
+          items={photos}
           slideInterval={2000}
           onImageLoad={this.handleImageLoad}
           />
@@ -38,10 +33,6 @@ export class PhotoGallery extends PureComponent {
 
 }
 
-//
-// const mapStateToProps = ({ currentUser, photos }) => ({
-//   photos,
-//   signedIn: !!currentUser && !!currentUser._id
-//  })
-//
-export default PhotoGallery
+const mapStateToProps = ({ currentUser, photos }) => ({ photos })
+
+export default connect(mapStateToProps, { fetchPhotos })(PhotoGallery)
