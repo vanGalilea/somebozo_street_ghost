@@ -12,6 +12,7 @@ const dialogStyle = {
   height: '250px',
   margin: '50px auto',
   padding: '2rem',
+  color: 'black'
 }
 
 const buttonStyle = {
@@ -49,7 +50,7 @@ export class SignIn extends PureComponent {
             <TextField ref="email" type="email" hintText="Email address" />
           </div>
           <div className="input">
-            <TextField ref="password" type="password" hintText="Password"  />
+            <TextField ref="password" type="password" hintText="Password" />
           </div>
           <RaisedButton
             style={ buttonStyle }
