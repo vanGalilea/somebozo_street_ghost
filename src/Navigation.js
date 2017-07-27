@@ -12,12 +12,20 @@ import AddPhoto from 'material-ui/svg-icons/image/add-a-photo'
 import FlatButton from 'material-ui/FlatButton'
 import Facebook from 'react-icons/lib/fa/facebook-square'
 import Instagram from 'react-icons/lib/fa/instagram'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+
+const style = {
+  paddingRight: '15px',
+}
 
 class Navigation extends PureComponent {
 
   render() {
     const { signedIn, signOut } = this.props
-    const menuButtons = <IconButton href='mailto:gebruiker@provider.nl'><Mail color="white" /></IconButton>
+    const mailButton = <FloatingActionButton mini={true} style={style} href='mailto:chenveze@gmail.com'><Mail color="white" /></FloatingActionButton>
+    const facebookButton = <FloatingActionButton mini={true} style={style} href='https://www.facebook.com/somebozo/'><Facebook style={{color: 'white', width: '25px'}}/></FloatingActionButton>
+    const instagramButton = <FloatingActionButton mini={true} style={style} href='https://www.instagram.com/somebozo_street_ghost/'><Instagram style={{color: 'white', width: '25px'}}  /></FloatingActionButton>
+
     return (
       <AppBar
         style={{backgroundColor: 'black', opacity: 0.8}}
@@ -25,13 +33,17 @@ class Navigation extends PureComponent {
         iconElementLeft={<IconButton onClick={()=>this.props.push('/')}><Palette /></IconButton>}
         iconElementRight={signedIn ?
           <div>
-            {menuButtons}
-            <IconButton onClick={()=>this.props.push('/admin')} ><AddPhoto color="white" /></IconButton>
-            <IconButton onClick={signOut}><Exit color="white" /></IconButton>
+            {mailButton}
+            {facebookButton}
+            {instagramButton}
+            <FloatingActionButton mini={true} style={style} onClick={()=>this.props.push('/admin')} ><AddPhoto color="white" /></FloatingActionButton>
+            <FloatingActionButton mini={true} style={style} onClick={signOut}><Exit color="white" /></FloatingActionButton>
           </div> :
           <div>
-            {menuButtons}
-            <IconButton onClick={()=>this.props.push('/sign-in')}><FingerPrint color="white"/></IconButton>
+            {mailButton}
+            {facebookButton}
+            {instagramButton}
+            <FloatingActionButton mini={true} style={style} onClick={()=>this.props.push('/sign-in')}><FingerPrint color="white"/></FloatingActionButton>
           </div>
         }
       />
