@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import Toggle from 'material-ui/Toggle'
 import TextField from 'material-ui/TextField'
 import { connect } from 'react-redux'
 import createPhoto from './actions/photos/create'
@@ -14,9 +13,6 @@ const styles = {
   block: {
     maxWidth: 50,
     marginRight: 60,
-  },
-  toggle: {
-    marginBottom: 16,
   }
 }
 
@@ -24,23 +20,22 @@ const style = {
   marginRight: 20,
 }
 
-
 export class AddPhotoInfo extends PureComponent {
   constructor(props) {
     super(props)
 
     this.state = {
-      title: '',
-      url: '',
+      originalTitle: '',
+      original: '',
+      thumbnail: '',
       description: '',
-      featured: false,
       currentPhoto: 0,
     }
   }
 
   handleTitleChange(event) {
     event.preventDefault()
-    this.setState({ title: event.target.value })
+    this.setState({ originalTitle: event.target.value })
   }
 
   handleDescriptionChange(event) {
@@ -48,25 +43,22 @@ export class AddPhotoInfo extends PureComponent {
     this.setState({ description: event.target.value })
   }
 
-  handleFeaturedToggle(event) {
-    event.preventDefault()
-    this.setState({ featured: !this.state.featured })
-  }
-
   handleSubmitAndNext(event) {
     event.preventDefault()
+    const { originalTitle, description, currentPhoto } = this.state
     const {tempUploadedPhotos} = this.props
-    const { title, description, featured, currentPhoto } = this.state
-    const newPhoto = { title, url: tempUploadedPhotos[currentPhoto].url, description, featured }
+    const original = tempUploadedPhotos[currentPhoto].original
+    const thumbnail = 'http://res.cloudinary.com/dqmqi1nxq/image/upload/c_scale,w_150/' + original.substring(61)
+    const newPhoto = { originalTitle, original, thumbnail, description }
 
     this.props.createPhoto(newPhoto)
     tempUploadedPhotos.length === currentPhoto + 1 ?
     this.props.cleanUploadedPhotos() :
     this.setState({
-      title: '',
-      url: '',
+      originalTitle: '',
+      original: '',
+      thumbnail: '',
       description: '',
-      featured: false,
       currentPhoto: currentPhoto + 1
     })
   }
@@ -74,19 +66,16 @@ export class AddPhotoInfo extends PureComponent {
   renderFormContainer(photo) {
     return (
       <List>
-        <Subheader>Photos added succefully</Subheader>
         <ListItem
           primaryText={
-            <div>
-              <TextField
-                hintText="Title of the Photo"
-                errorText={this.state.title.length === 0 ? "You have to fill in a title" : null }
-                floatingLabelText="Title"
-                ref="title"
-                onChange={this.handleTitleChange.bind(this)}
-                value={this.state.title}
-              />
-            </div>
+            <TextField
+              hintText="Title of the Photo"
+              errorText={this.state.originalTitle.length === 0 ? "You have to fill in a title" : null }
+              floatingLabelText="Title"
+              ref="title"
+              onChange={this.handleTitleChange.bind(this)}
+              value={this.state.originalTitle}
+            />
           }
           secondaryText={
             <TextField
@@ -99,18 +88,7 @@ export class AddPhotoInfo extends PureComponent {
               value={this.state.description}
             />
           }
-          rightToggle={
-            <div style={styles.block}>
-              <Toggle
-                label="Featured"
-                defaultToggled={true}
-                style={styles.toggle}
-                onToggle={this.handleFeaturedToggle.bind(this)}
-              />
-            </div>
-
-          }
-          leftAvatar={<Avatar src={photo.url} />}
+          leftAvatar={<Avatar src={photo.original} />}
         />
       </List>
     )

@@ -21,7 +21,7 @@ export class DropPhotos extends PureComponent {
       const responseUrl = response.body.secure_url
       if (err) console.error(err)
       if (responseUrl !== '') {
-        this.props.uploadedPhotos({ url: responseUrl })
+        this.props.uploadedPhotos({ original: responseUrl })
       }
     })
   }

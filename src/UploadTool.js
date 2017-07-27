@@ -49,7 +49,7 @@ export class UploadTool extends PureComponent {
       case 1:
         return <AddPhotoInfo />
       case 2:
-        return <p>You have succefully uploaded {this.props.tempUploadedPhotos.length+1} photo/s,
+        return <p>You have succefully uploaded the photo/s,
           after pressing Next you will be redirected to the homepage</p>
       default:
         return 'You\'re a long way from home sonny jim!';
