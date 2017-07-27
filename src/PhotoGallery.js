@@ -24,8 +24,9 @@ export class PhotoGallery extends PureComponent {
       <div className="gallery">
         <ImageGallery
           items={photos}
-          slideInterval={2000}
+          slideInterval={3000}
           onImageLoad={this.handleImageLoad}
+          thumbnailPosition='left'
           />
       </div>
     )
