@@ -75,42 +75,44 @@ export class UploadTool extends PureComponent {
     return (
       <div>
         <h2>Admin Upload Tool</h2>
-        <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
-          <Stepper activeStep={stepIndex}>
-            <Step>
-              <StepLabel>Upload Photo/s</StepLabel>
-            </Step>
-            <Step>
-              <StepLabel>Add Info</StepLabel>
-            </Step>
-            <Step>
-              <StepLabel>Confirm and Submit</StepLabel>
-            </Step>
-          </Stepper>
+        <div style={{display: 'flex', flexDirection: 'row'}}>
+          <div style={{width: '50%', marginTop: -30, marginLeft: 20, paddingRight: 75}}>
+            <Stepper activeStep={stepIndex}>
+              <Step>
+                <StepLabel>Upload Photo/s</StepLabel>
+              </Step>
+              <Step>
+                <StepLabel>Add Info</StepLabel>
+              </Step>
+              <Step>
+                <StepLabel>Confirm and Submit</StepLabel>
+              </Step>
+            </Stepper>
 
-          <div style={contentStyle}>
-            {finished ? this.props.push('/') : (
-              <div>
-                {this.getStepContent(stepIndex)}
-                <div style={{marginTop: 12}}>
-                  <FlatButton
-                    label="Back"
-                    disabled={stepIndex === 0}
-                    onClick={this.handlePrev.bind(this)}
-                    style={{marginRight: 12}}
-                  />
-                  <RaisedButton
-                    label={stepIndex === 2 ? 'Finish' : 'Next'}
-                    primary={true}
-                    onClick={this.handleNext.bind(this)}
-                    disabled={(stepIndex === 2) ? false : stepCompleted}
-                  />
+            <div style={contentStyle}>
+              {finished ? this.props.push('/') : (
+                <div>
+                  {this.getStepContent(stepIndex)}
+                  <div style={{marginTop: 12}}>
+                    <FlatButton
+                      label="Back"
+                      disabled={stepIndex === 0}
+                      onClick={this.handlePrev.bind(this)}
+                      style={{marginRight: 12}}
+                    />
+                    <RaisedButton
+                      label={stepIndex === 2 ? 'Finish' : 'Next'}
+                      primary={true}
+                      onClick={this.handleNext.bind(this)}
+                      disabled={(stepIndex === 2) ? false : stepCompleted}
+                    />
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
+          <PhotoGrid />
         </div>
-        <PhotoGrid />
       </div>
     )
   }

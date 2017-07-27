@@ -46,7 +46,12 @@ export class PhotoGrid extends PureComponent {
             <GridTile
               key={photo.original}
               title={photo.originalTitle}
-              actionIcon={<IconButton onClick={()=> this.props.deletePhoto(photo._id)}>
+              actionIcon={<IconButton
+                            onClick={()=> this.props.deletePhoto(photo._id)}
+                            tooltip="Click to Delete"
+                            tooltipPosition="bottom-left"
+                            touch={true}
+                          >
                             <Delete color="white"/>
                           </IconButton>}
               actionPosition="right"
