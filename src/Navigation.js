@@ -13,6 +13,7 @@ import FlatButton from 'material-ui/FlatButton'
 import Facebook from 'react-icons/lib/fa/facebook-square'
 import Instagram from 'react-icons/lib/fa/instagram'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
+import './Navigation.css'
 
 const style = {
   paddingRight: '15px',
@@ -30,7 +31,9 @@ class Navigation extends PureComponent {
       <AppBar
         style={{backgroundColor: 'black', opacity: 0.8}}
         title="Somebozo Street Ghost"
-        iconElementLeft={<IconButton onClick={()=>this.props.push('/')}><Palette /></IconButton>}
+        iconElementLeft={<IconButton onClick={()=>this.props.push('/')}>
+                          <img className="home-logo" src={require('./assets/homeLogo.jpg')} />
+                        </IconButton>}
         iconElementRight={signedIn ?
           <div>
             {mailButton}
