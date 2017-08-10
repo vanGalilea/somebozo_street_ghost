@@ -1,0 +1,20 @@
+.footer {
+  background-color: black;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  height: 56px;
+  margin: 30px 0px 0px; }
+  .footer p {
+    margin: 0px;
+    padding: 17px 15px;
+    color: white;
+    width: auto;
+    font-size: medium; }
+  .footer .footer-logo {
+    height: 35px;
+    width: 35px; }
+  .footer .footer-logo:hover {
+    opacity: 0.5;
+    height: 38px;
+    width: 38px; }
