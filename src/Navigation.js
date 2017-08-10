@@ -4,12 +4,10 @@ import { push } from 'react-router-redux'
 import signOut from './actions/user/sign-out'
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
-import Palette from 'material-ui/svg-icons/image/palette'
 import FingerPrint from 'material-ui/svg-icons/action/fingerprint'
 import Exit from 'material-ui/svg-icons/action/exit-to-app'
 import Mail from 'material-ui/svg-icons/action/markunread-mailbox'
 import AddPhoto from 'material-ui/svg-icons/image/add-a-photo'
-import FlatButton from 'material-ui/FlatButton'
 import Facebook from 'react-icons/lib/fa/facebook-square'
 import Instagram from 'react-icons/lib/fa/instagram'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
@@ -32,7 +30,7 @@ class Navigation extends PureComponent {
         style={{backgroundColor: 'black', opacity: 0.8}}
         title="Somebozo Street Ghost"
         iconElementLeft={<IconButton onClick={()=>this.props.push('/')}>
-                          <img className="home-logo" src={require('./assets/homeLogo.jpg')} />
+                          <img className="home-logo" src={require('./assets/homeLogo.jpg')} alt="home-logo" />
                         </IconButton>}
         iconElementRight={signedIn ?
           <div className="social-media">

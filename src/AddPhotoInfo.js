@@ -4,17 +4,9 @@ import { connect } from 'react-redux'
 import createPhoto from './actions/photos/create'
 import Avatar from 'material-ui/Avatar'
 import {List, ListItem} from 'material-ui/List'
-import Subheader from 'material-ui/Subheader'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import Done from 'material-ui/svg-icons/action/done'
 import cleanUploadedPhotos from './actions/photos/cleanUploadedPhotos'
-
-const styles = {
-  block: {
-    maxWidth: 50,
-    marginRight: 60,
-  }
-}
 
 const style = {
   marginRight: 20,

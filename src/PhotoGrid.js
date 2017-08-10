@@ -4,9 +4,7 @@ import {GridList, GridTile} from 'material-ui/GridList'
 import Delete from 'material-ui/svg-icons/action/delete-forever'
 import fetchPhotos from './actions/photos/fetch'
 import deletePhoto from './actions/photos/delete'
-import FlatButton from 'material-ui/FlatButton'
 import IconButton from 'material-ui/IconButton'
-import RaisedButton from 'material-ui/RaisedButton'
 
 const styles = {
   root: {
@@ -19,10 +17,6 @@ const styles = {
     height: 500,
     overflowY: 'auto',
   },
-}
-
-const customContentStyle = {
-
 }
 
 export class PhotoGrid extends PureComponent {

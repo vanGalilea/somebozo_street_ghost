@@ -1,10 +1,7 @@
 import React, { PureComponent } from 'react'
 import ImageGallery from 'react-image-gallery'
 import { connect } from 'react-redux'
-import Delete from 'material-ui/svg-icons/action/delete-forever'
 import fetchPhotos from './actions/photos/fetch'
-import deletePhoto from './actions/photos/delete'
-import IconButton from 'material-ui/IconButton'
 import './PhotoGallery.css'
 
 export class PhotoGallery extends PureComponent {

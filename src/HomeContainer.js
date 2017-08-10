@@ -38,6 +38,7 @@ export class HomeContainer extends PureComponent {
         </div>
         <h2>Check out my latest Instagram posts</h2>
         <iframe
+          title="insta"
           src={src}
           allowTransparency="true"
           frameBorder="0"

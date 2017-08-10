@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 import IconButton from 'material-ui/IconButton'
-import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
 import './BottomNavBar.css'
 
 const style= {
@@ -17,11 +15,11 @@ class BottomNavBar extends Component {
         <p>This website was made by me</p>
 
         <IconButton style={style} href='https://github.com/vanGalilea'>
-          <img className="footer-logo" src={require('./assets/github.png')} />
+          <img className="footer-logo" src={require('./assets/github.png')} alt="footer-logo" />
         </IconButton>
 
         <IconButton style={style} href='https://www.linkedin.com/in/ziv-steve-galili-09434698/'>
-          <img className="footer-logo" src={require('./assets/linkedIn.png')} />
+          <img className="footer-logo" src={require('./assets/linkedIn.png')} alt="footer-logo" />
         </IconButton>
       </div>
     )
