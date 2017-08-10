@@ -3,14 +3,6 @@ import PhotoGallery from './PhotoGallery'
 import src from './InstagramCred'
 import './HomeContainer.css'
 
-const style = {
-  display:"block",
-  width:"940px",
-  height:"224px",
-  border:"none",
-  overflow:"visible"
-}
-
 export class HomeContainer extends PureComponent {
 
   render() {
@@ -43,7 +35,6 @@ export class HomeContainer extends PureComponent {
           allowTransparency="true"
           frameBorder="0"
           scrolling="no"
-          style={style}
           className="insta-widget"
         ></iframe>
       </div>

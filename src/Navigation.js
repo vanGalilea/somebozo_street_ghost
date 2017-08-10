@@ -17,6 +17,12 @@ const style = {
   paddingRight: '15px',
 }
 
+const navStyle = {
+  backgroundColor: 'black',
+  opacity: 0.8,
+  
+}
+
 class Navigation extends PureComponent {
 
   render() {
@@ -27,7 +33,7 @@ class Navigation extends PureComponent {
 
     return (
       <AppBar
-        style={{backgroundColor: 'black', opacity: 0.8}}
+        style={navStyle}
         title="Somebozo Street Ghost"
         iconElementLeft={<IconButton onClick={()=>this.props.push('/')}>
                           <img className="home-logo" src={require('./assets/homeLogo.jpg')} alt="home-logo" />

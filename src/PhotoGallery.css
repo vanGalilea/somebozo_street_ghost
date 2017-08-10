@@ -331,3 +331,9 @@
   padding-top: 50px;
   margin: 0 auto;
   width: 45%; }
+
+@media only screen and (max-width: 500px) {
+  .gallery {
+    padding-top: 20px;
+    margin: 0 auto;
+    width: 90%; } }
