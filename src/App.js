@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from './assets/styles/theme'
 import Navigation from './Navigation'
+import BottomNavBar from './BottomNavBar'
 
 class App extends Component {
   static childContextTypes = {
@@ -19,6 +20,7 @@ class App extends Component {
         <div className="App">
           <Navigation />
           { this.props.children }
+          <BottomNavBar />
         </div>
       </MuiThemeProvider>
     )

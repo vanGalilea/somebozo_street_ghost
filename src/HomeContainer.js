@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import PhotoGallery from './PhotoGallery'
 import src from './InstagramCred'
-import BottomNavBar from './BottomNavBar'
 import './HomeContainer.css'
 
 const style = {
@@ -37,6 +36,7 @@ export class HomeContainer extends PureComponent {
           </p>
           <PhotoGallery />
         </div>
+        <h2>Check out my latest Instagram posts</h2>
         <iframe
           src={src}
           allowTransparency="true"
@@ -45,7 +45,6 @@ export class HomeContainer extends PureComponent {
           style={style}
           className="insta-widget"
         ></iframe>
-        <BottomNavBar />
       </div>
     )
   }

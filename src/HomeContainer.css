@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise");
 .container {
   display: flex; }
 
@@ -7,3 +8,6 @@ p {
 
 .insta-widget {
   margin: auto; }
+
+h2 {
+  font-family: 'Waiting for the Sunrise', cursive; }
