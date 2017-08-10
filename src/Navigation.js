@@ -35,14 +35,14 @@ class Navigation extends PureComponent {
                           <img className="home-logo" src={require('./assets/homeLogo.jpg')} />
                         </IconButton>}
         iconElementRight={signedIn ?
-          <div>
+          <div className="social-media">
             {mailButton}
             {facebookButton}
             {instagramButton}
             <FloatingActionButton mini={true} style={style} onClick={()=>this.props.push('/admin')} ><AddPhoto color="white" /></FloatingActionButton>
             <FloatingActionButton mini={true} style={style} onClick={signOut}><Exit color="white" /></FloatingActionButton>
           </div> :
-          <div>
+          <div className="social-media">
             {mailButton}
             {facebookButton}
             {instagramButton}

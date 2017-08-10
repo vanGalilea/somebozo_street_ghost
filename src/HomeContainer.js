@@ -1,12 +1,22 @@
 import React, { PureComponent } from 'react'
 import PhotoGallery from './PhotoGallery'
+import src from './InstagramCred'
 import './HomeContainer.css'
+
+const style = {
+  display:"block",
+  width:"940px",
+  height:"224px",
+  border:"none",
+  overflow:"visible"
+}
 
 export class HomeContainer extends PureComponent {
 
   render() {
 
     return(
+      <div>
       <div className="container" >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra ligula eros. Sed placerat lectus ac dui interdum convallis.
@@ -25,6 +35,15 @@ export class HomeContainer extends PureComponent {
           ac accumsan tellus maximus id. Ut ex elit, feugiat aliquet molestie ut, euismod sit amet purus.
         </p>
         <PhotoGallery />
+      </div>
+      <iframe
+        src={src}
+        allowTransparency="true"
+        frameBorder="0"
+        scrolling="no"
+        style={style}
+        className="insta-widget"
+      ></iframe>
       </div>
     )
   }
