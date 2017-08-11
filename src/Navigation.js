@@ -27,9 +27,11 @@ class Navigation extends PureComponent {
 
     return (
       <div className="nav-bar">
-        <IconButton onClick={()=>this.props.push('/')}>
-          <img className="home-logo" src={require('./assets/homeLogo.jpg')} alt="home-logo" />
-        </IconButton>
+        <div className="home">
+          <IconButton onClick={()=>this.props.push('/')}>
+            <img className="home-logo" src={require('./assets/homeLogo.jpg')} alt="home-logo" />
+          </IconButton>
+        </div>
 
         <p>Somebozo Street Ghost</p>
 

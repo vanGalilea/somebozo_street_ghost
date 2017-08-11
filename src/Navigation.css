@@ -19,10 +19,10 @@
 @media only screen and (max-width: 500px) {
   .nav-bar {
     flex-direction: column;
-    justify-content: center;
-    height: 145px;
+    justify-content: space-around;
+    height: 160px;
     border-radius: 7px; }
-  .home-wrapper {
-    margin: 10px auto; }
-  .social {
-    margin: 0px auto; } }
+    .nav-bar .home {
+      margin: 13px auto 0px; }
+    .nav-bar .social-media {
+      margin: 0px auto 10px; } }
