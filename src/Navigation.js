@@ -26,14 +26,14 @@ class Navigation extends PureComponent {
     const instagramButton = <FloatingActionButton mini={true} style={style} href='https://www.instagram.com/somebozo_street_ghost/'><Instagram style={{color: 'white', width: '25px'}}  /></FloatingActionButton>
 
     return (
-      <AppBar
-        className="nav-bar"
-        title={<p className="title">Somebozo Street Ghost</p>}
-        iconElementLeft={<IconButton onClick={()=>this.props.push('/')}>
-                          <img className="home-logo" src={require('./assets/homeLogo.jpg')} alt="home-logo" />
-                        </IconButton>}
-        iconClassNameLeft="home-wrapper"
-        iconElementRight={signedIn ?
+      <div className="nav-bar">
+        <IconButton onClick={()=>this.props.push('/')}>
+          <img className="home-logo" src={require('./assets/homeLogo.jpg')} alt="home-logo" />
+        </IconButton>
+
+        <p>Somebozo Street Ghost</p>
+
+        {signedIn ?
           <div className="social-media">
             {mailButton}
             {facebookButton}
@@ -48,8 +48,8 @@ class Navigation extends PureComponent {
             <FloatingActionButton mini={true} style={style} onClick={()=>this.props.push('/sign-in')}><FingerPrint color="white"/></FloatingActionButton>
           </div>
         }
-        iconClassNameRight="social"
-      />
+
+      </div>
     )
   }
 }

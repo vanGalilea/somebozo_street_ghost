@@ -1,24 +1,27 @@
 @import url("https://fonts.googleapis.com/css?family=Pacifico");
 .nav-bar {
-  background-color: #0b0024 !important; }
+  background-color: #0b0024 !important;
+  border-radius: 30px;
+  display: flex;
+  height: 55px; }
   .nav-bar p {
     font-family: 'Pacifico', cursive;
     font-size: 24px;
-    margin: 0px; }
+    margin: 6px;
+    color: white; }
   .nav-bar .home-logo {
     height: 50px;
-    margin: -15px;
+    margin: -10px;
     border-radius: 25px; }
   .nav-bar .social-media {
-    margin-top: 3px;
-    margin-right: -10px;
-    margin-left: auto; }
+    margin: 7px 7px 0px auto; }
 
 @media only screen and (max-width: 500px) {
   .nav-bar {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important; }
+    flex-direction: column;
+    justify-content: center;
+    height: 145px;
+    border-radius: 7px; }
   .home-wrapper {
     margin: 10px auto; }
   .social {
