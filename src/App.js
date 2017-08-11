@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from './assets/styles/theme'
 import Navigation from './Navigation'
 import BottomNavBar from './BottomNavBar'
+import './App.css'
 
 class App extends Component {
   static childContextTypes = {
@@ -20,7 +21,9 @@ class App extends Component {
         <div className="App">
           <Navigation />
           { this.props.children }
-          <BottomNavBar />
+          <div className="BottomNavBar">
+            <BottomNavBar />
+          </div>
         </div>
       </MuiThemeProvider>
     )

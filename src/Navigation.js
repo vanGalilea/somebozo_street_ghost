@@ -14,13 +14,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 import './Navigation.css'
 
 const style = {
-  paddingRight: '15px',
-}
-
-const navStyle = {
-  backgroundColor: 'black',
-  opacity: 0.8,
-  
+  paddingRight: '10px',
 }
 
 class Navigation extends PureComponent {
@@ -33,11 +27,12 @@ class Navigation extends PureComponent {
 
     return (
       <AppBar
-        style={navStyle}
-        title="Somebozo Street Ghost"
+        className="nav-bar"
+        title={<p className="title">Somebozo Street Ghost</p>}
         iconElementLeft={<IconButton onClick={()=>this.props.push('/')}>
                           <img className="home-logo" src={require('./assets/homeLogo.jpg')} alt="home-logo" />
                         </IconButton>}
+        iconClassNameLeft="home-wrapper"
         iconElementRight={signedIn ?
           <div className="social-media">
             {mailButton}
@@ -53,6 +48,7 @@ class Navigation extends PureComponent {
             <FloatingActionButton mini={true} style={style} onClick={()=>this.props.push('/sign-in')}><FingerPrint color="white"/></FloatingActionButton>
           </div>
         }
+        iconClassNameRight="social"
       />
     )
   }

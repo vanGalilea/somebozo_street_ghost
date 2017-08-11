@@ -1,17 +1,33 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico')
 
-h1
-  font-family: 'Pacifico', cursive
 
-.home-logo
-  height: 50px
-  margin: -15px
-  border-radius: 25px
+.nav-bar
+  background-color: rgb(11, 0, 36) !important
 
-.social-media
-  margin-top: 3px
-  margin-right: -10px
-  margin-left: auto
+  p
+    font-family: 'Pacifico', cursive
+    font-size: 24px
+    margin: 0px
+
+  .home-logo
+    height: 50px
+    margin: -15px
+    border-radius: 25px
+
+  .social-media
+    margin-top: 3px
+    margin-right: -10px
+    margin-left: auto
 
 
 @media only screen and (max-width: 500px)
+  .nav-bar
+    display: flex !important
+    flex-direction: column !important
+    justify-content:   center !important
+
+  .home-wrapper
+    margin: 10px auto
+
+  .social
+    margin: 0px auto
