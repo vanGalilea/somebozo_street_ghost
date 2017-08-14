@@ -21,7 +21,7 @@ class Navigation extends PureComponent {
 
   render() {
     const { signedIn, signOut } = this.props
-    const mailButton = <FloatingActionButton mini={true} style={style} href='mailto:chenveze@gmail.com'><Mail color="white" /></FloatingActionButton>
+    const mailButton = <FloatingActionButton mini={true} style={style} href='mailto:info@somebozo.art'><Mail color="white" /></FloatingActionButton>
     const facebookButton = <FloatingActionButton mini={true} style={style} href='https://www.facebook.com/somebozo/'><Facebook style={{color: 'white', width: '25px'}}/></FloatingActionButton>
     const instagramButton = <FloatingActionButton mini={true} style={style} href='https://www.instagram.com/somebozo_street_ghost/'><Instagram style={{color: 'white', width: '25px'}}  /></FloatingActionButton>
 
