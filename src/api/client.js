@@ -4,7 +4,7 @@ import hooks from 'feathers-hooks'
 import auth from 'feathers-authentication-client'
 import superagent from 'superagent'
 
-const host = 'https://somebozo-api.herokuapp.com'
+const host = 'http://api.somebozo.art'
 export const FEATHERS_TOKEN_KEY = 'somebozoB8'
 
 const feathersClient = feathers()
