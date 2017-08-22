@@ -40,7 +40,7 @@ export class AddPhotoInfo extends PureComponent {
     const { originalTitle, description, currentPhoto } = this.state
     const {tempUploadedPhotos} = this.props
     const original = tempUploadedPhotos[currentPhoto].original
-    const thumbnail = 'http://res.cloudinary.com/dqmqi1nxq/image/upload/c_scale,w_150/' + original.substring(61)
+    const thumbnail = 'https://res.cloudinary.com/dqmqi1nxq/image/upload/c_scale,w_150/' + original.substring(61)
     const newPhoto = { originalTitle, original, thumbnail, description }
 
     this.props.createPhoto(newPhoto)
