@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+.chart {
+  margin: 10px; }
+
+.button {
+  margin: -140px 0px 0px 40px; }

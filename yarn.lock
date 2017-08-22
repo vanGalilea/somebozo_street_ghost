@@ -5300,6 +5300,10 @@ react-addons-transition-group@^15.4.0:
   dependencies:
     react-transition-group "^1.2.0"
 
+react-analytics-widget@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-analytics-widget/-/react-analytics-widget-1.0.2.tgz#30ca739e5b30d2a5394b4e2bdaec19c981981efd"
+
 react-dev-utils@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-3.0.2.tgz#1a42263e9b6aa11dcb45d69dfe5eb1b354bd5531"
